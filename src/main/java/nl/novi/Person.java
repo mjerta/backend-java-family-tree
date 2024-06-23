@@ -37,11 +37,14 @@ public class Person {
     this.age = age;
   }
 
-  public void addParents(Person person) {
-    if(person.sex.equals("male")) {
-      this.father = person;
-    } else if (person.sex.equals("female")) {
-      this.mother = person;
+  public void addParents(List<Person> parents) {
+    for (Person parent : parents) {
+      if (parent.sex.equals("male")) {
+        this.father = parent;
+      }
+      else if (parent.sex.equals("female")) {
+        this.mother = parent;
+      }
     }
   }
 
@@ -55,7 +58,7 @@ public class Person {
 
   public List<Person> getGrandChildren(Person person) {
     List<Person> grandChildren = new ArrayList<>();
-    for(Person child : children) {
+    for (Person child : children) {
       grandChildren.addAll(child.getChildren());
     }
     return grandChildren;
