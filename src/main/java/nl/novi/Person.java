@@ -7,7 +7,6 @@ import java.util.List;
 @Getter
 @Setter
 
-
 public class Person {
 
   private String name;
@@ -37,6 +36,11 @@ public class Person {
   }
 
   public void addParents(Person person) {
+    if(person.sex.equals("male")) {
+      this.father = person;
+    } else if (person.sex.equals("female")) {
+      this.mother = person;
+    }
 
   }
 
