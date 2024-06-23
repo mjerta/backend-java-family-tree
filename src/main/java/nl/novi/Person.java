@@ -22,7 +22,7 @@ public class Person {
   private List<Person> children;
   private List<Pet> pets;
 
-  public Person(String name, String sex, int age, String lastName) {
+  public Person(String name, String lastName, String sex, int age) {
     this.name = name;
     this.sex = sex;
     this.age = age;
