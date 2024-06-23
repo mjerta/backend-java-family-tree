@@ -2,6 +2,8 @@ package nl.novi;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -41,20 +43,24 @@ public class Person {
     } else if (person.sex.equals("female")) {
       this.mother = person;
     }
-
   }
 
-  public void addChild(Person person) {
-
+  public void addChild(Person child) {
+    children.add(child);
   }
 
-  public void addSibbling(Person person) {
-
+  public void addSibbling(Person sibbling) {
+    siblings.add(sibbling);
   }
 
-  public void getGrandChildren() {
-
+  public List<Person> getGrandChildren(Person person) {
+    List<Person> grandChildren = new ArrayList<>();
+    for(Person child : children) {
+      for(Person grandchild : child.getChildren()) {
+        grandChildren.add(grandchild);
+      }
+    }
+    return grandChildren;
   }
-
 
 }
