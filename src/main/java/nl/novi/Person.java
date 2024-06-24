@@ -37,14 +37,15 @@ public class Person {
     this.age = age;
   }
 
-  public void addParents(List<Person> parents) {
-    for (Person parent : parents) {
-      if (parent.sex.equals("male")) {
-        this.father = parent;
-      }
-      else if (parent.sex.equals("female")) {
-        this.mother = parent;
-      }
+  public void addParents(Person farther, Person mother) {
+    if (farther.sex.equals("male")) {
+      this.father = farther;
+    }
+    else if (mother.sex.equals("female")) {
+      this.mother = mother;
+    }
+    else {
+      System.out.println("Parent has the wrong gender filled in");
     }
   }
 
