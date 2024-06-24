@@ -159,6 +159,7 @@ public class PersonTest {
 
   @Test
   void canNotAddParentsBecauseOfWrondGender() {
+    // arrange
     var father = new Person("Wolter", "Postma", "female", 68);
     var mother = new Person("Joke", "Nijhof", "male", 68);
     // act
@@ -168,6 +169,17 @@ public class PersonTest {
     // assert
     assertNotEquals(mother, sutMother);
     assertNotEquals(father, sutFather);
+  }
+
+  @Test
+  void canAddChild() {
+    // arrange
+    var newBaby = new Person("Tamara", "Postma", "female", 0);
+    // act
+    person.addChild(newBaby);
+    var sut = person.getChildren();
+    // assert
+    assertEquals(sut.size(), 1);
   }
 
 }
