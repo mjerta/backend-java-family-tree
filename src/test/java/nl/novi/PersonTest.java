@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class PersonTest {
 
@@ -140,6 +141,33 @@ public class PersonTest {
     var sut = person.getPets();
     // assert
     assertEquals(pets, sut);
+  }
+
+  @Test
+  void canAddParents() {
+    //arrange
+    var father = new Person("Wolter", "Postma", "male", 68);
+    var mother = new Person("Joke", "Nijhof", "female", 68);
+    // act
+    person.addParents(father, mother);
+    var sutMother = person.getMother();
+    var sutFather = person.getFather();
+    // assert
+    assertEquals(mother, sutMother);
+    assertEquals(father, sutFather);
+  }
+
+  @Test
+  void canNotAddParentsBecauseOfWrondGender() {
+    var father = new Person("Wolter", "Postma", "female", 68);
+    var mother = new Person("Joke", "Nijhof", "male", 68);
+    // act
+    person.addParents(father, mother);
+    var sutMother = person.getMother();
+    var sutFather = person.getFather();
+    // assert
+    assertNotEquals(mother, sutMother);
+    assertNotEquals(father, sutFather);
   }
 
 }
