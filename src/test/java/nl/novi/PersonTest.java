@@ -182,4 +182,30 @@ public class PersonTest {
     assertEquals(sut.size(), 1);
   }
 
+  @Test
+  void canAddSibbling() {
+    // arrange
+    var newBrother = new Person("Peter", "Postma", "male", 0);
+    // act
+    person.addSibbling(newBrother);
+    var sut = person.getSiblings();
+    // assert
+    assertEquals(sut.size(), 1);
+  }
+
+  @Test
+  void canGetGrandChildren() {
+    // arrange
+    var child = new Person("Tommy", "Postma", "male", 20);
+    var grandChild = new Person("Ricardo", "Postma", "male", 0);
+    List<Person> grandChildren = new ArrayList<>();
+    grandChildren.add(grandChild);
+    // act
+    person.addChild(child);
+    child.addChild(grandChild);
+    var sut = person.getGrandChildren();
+    // assert
+    assertEquals(sut, grandChildren);
+  }
+
 }

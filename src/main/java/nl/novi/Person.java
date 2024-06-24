@@ -55,8 +55,9 @@ public class Person {
     siblings.add(sibbling);
   }
 
-  public List<Person> getGrandChildren(Person person) {
+  public List<Person> getGrandChildren() {
     List<Person> grandChildren = new ArrayList<>();
+
     for (Person child : children) {
       grandChildren.addAll(child.getChildren());
     }
