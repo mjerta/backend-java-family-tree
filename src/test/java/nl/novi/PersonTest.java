@@ -27,9 +27,11 @@ public class PersonTest {
     // act
     person.setName(firstName);
     personWithMiddleName.setName(firstName);
+    var sutPerson = person.getName();
+    var sutPersonWithMiddleName = personWithMiddleName.getName();
     // assert
-    assertEquals(firstName, person.getName());
-    assertEquals(firstName, personWithMiddleName.getName());
+    assertEquals(firstName, sutPerson);
+    assertEquals(firstName, sutPersonWithMiddleName);
   }
 
   @Test
@@ -158,7 +160,7 @@ public class PersonTest {
   }
 
   @Test
-  void canNotAddParentsBecauseOfWrondGender() {
+  void canNotAddParentsBecauseOfWrongGender() {
     // arrange
     var father = new Person("Wolter", "Postma", "female", 68);
     var mother = new Person("Joke", "Nijhof", "male", 68);
@@ -179,7 +181,7 @@ public class PersonTest {
     person.addChild(newBaby);
     var sut = person.getChildren();
     // assert
-    assertEquals(sut.size(), 1);
+    assertEquals(1, sut.size());
   }
 
   @Test
@@ -190,7 +192,7 @@ public class PersonTest {
     person.addSibbling(newBrother);
     var sut = person.getSiblings();
     // assert
-    assertEquals(sut.size(), 1);
+    assertEquals(1, sut.size());
   }
 
   @Test
@@ -205,7 +207,6 @@ public class PersonTest {
     child.addChild(grandChild);
     var sut = person.getGrandChildren();
     // assert
-    assertEquals(sut, grandChildren);
+    assertEquals(grandChildren, sut);
   }
-
 }
