@@ -84,9 +84,9 @@ public class Person {
 
   public List<Person> getAllNieces() {
     List<Person> allNieces = new ArrayList<>();
-    if (siblings != null) {
+    if (!siblings.isEmpty()) {
       for (Person sibling : siblings) {
-        if (sibling.getChildren() != null) {
+        if (!sibling.getChildren().isEmpty()) {
           boolean nieceFound = false;
           for (Person child : sibling.getChildren()) {
             if (child.sex.equals("female")) {

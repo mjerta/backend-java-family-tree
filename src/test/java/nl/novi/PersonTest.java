@@ -3,6 +3,7 @@ package nl.novi;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.invoke.VarHandle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -240,5 +241,57 @@ public class PersonTest {
     var sut = person.getAllAnimalsFromGrandChildren(grandChildren);
     // assert
     assertEquals(pets, sut);
+  }
+
+  @Test
+  void canGetAllNiecesWithResultOfNieceOfList() {
+    // arrange
+    var brother = new Person("Johan", "Postma", "male", 36);
+    person.addSibbling(brother);
+    var kidOfBrotherTwo = new Person("Fenna", "Postma", "female", 8);
+    List<Person> childrenOfBroter = new ArrayList<>();
+    childrenOfBroter.add(kidOfBrotherTwo);
+    brother.setChildren(childrenOfBroter);
+    // act
+    var sut = person.getAllNieces();
+    // assert
+    assertEquals(childrenOfBroter, sut);
+  }
+
+  @Test
+  void canGetAllNiecesWithResultOfNoNieceWasFoundButWithSon() {
+    // arrange
+    var brother = new Person("Johan", "Postma", "male", 36);
+    var kidOfBrotherOne = new Person("Lucas", "Postma", "Male", 11);
+    person.addSibbling(brother);
+    List<Person> childrenOfBroter = new ArrayList<>();
+    childrenOfBroter.add(kidOfBrotherOne);
+    brother.setChildren(childrenOfBroter);
+    // act
+    var sut = person.getAllNieces();
+    // assert
+    assertEquals(0, sut.size());
+  }
+
+  @Test
+  void canGetAllNiecesButHasNoChildren() {
+    // arrange
+    var brother = new Person("Johan", "Postma", "male", 36);
+    person.addSibbling(brother);
+
+    // act
+    var sut = person.getAllNieces();
+    // assert
+    assertEquals(brother.getChildren().size(), sut.size());
+  }
+
+  @Test
+  void canGetAllNiecesButHasNoSiblings() {
+    // arrange
+    // act
+    person.getAllNieces();
+    var sut = person.getSiblings().size();
+    // assert
+    assertEquals(0, sut);
   }
 }
