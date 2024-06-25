@@ -42,7 +42,9 @@ public class Person {
   public void addParents(Person farther, Person mother) {
     if (farther.sex.equals("male") && mother.sex.equals("female")) {
       this.father = farther;
+      this.father.addChild(this);
       this.mother = mother;
+      this.mother.addChild(this);
     }
     else {
       System.out.println("One of the parent has the wrong gender filled in.");

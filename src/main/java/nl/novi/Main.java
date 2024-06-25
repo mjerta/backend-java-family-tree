@@ -14,6 +14,8 @@ public class Main {
     Person brother = new Person("Johan", "Postma", "male", 36);
     Person niece = new Person("Fenna", "Postma", "female", 7);
     Person nephew = new Person("Locas", "Postma", "male", 11);
+    Person mother = new Person("Joke", "Nijhof", "female", 68);
+    Person father = new Person("Wolter", "Postma", "male", 68);
     maarten.setPartner(partner);
     maarten.addSibbling(brother);
     brother.addChild(niece);
@@ -62,5 +64,15 @@ public class Main {
     //Testing if i can see my partner
     System.out.println("\nTesting to get if I can add a partner");
     System.out.println(maarten.getPartner().getName());
+
+    //Testing what will happen with the father and if he have children or not
+    System.out.println("\nTesting if the father is being set by addparents also will have a child that set the parent");
+    maarten.addParents(father, mother);
+    var nameOfFather = maarten.getFather().getName();
+    System.out.println(nameOfFather);
+    var childrenOfFather = maarten.getFather().getChildren();
+    for (Person child : childrenOfFather) {
+      System.out.println(child.getName());
+    }
   }
 }
