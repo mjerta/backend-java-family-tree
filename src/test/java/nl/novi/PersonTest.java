@@ -101,6 +101,17 @@ public class PersonTest {
   }
 
   @Test
+  void canGetPartner() {
+    // arrange
+    var partner = new Person("Krizia", "Garcia", "Female", 33);
+    // act
+    person.setPartner(partner);
+    var sut = person.getPartner();
+    // assert
+    assertEquals(partner, sut);
+  }
+
+  @Test
   void canGetSiblings() {
     // arrange
     var brotherOne = new Person("Maarten", "Postma", "male", 33);
