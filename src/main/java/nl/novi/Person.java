@@ -63,4 +63,13 @@ public class Person {
     }
     return grandChildren;
   }
+
+  public List<Pet> getAllAnimalsFromGrandChildren(List<Person> grandChildren) {
+    List<Pet> allAnimalsFromGrandChild = new ArrayList<>();
+    for (Person child : grandChildren) {
+      allAnimalsFromGrandChild.addAll(child.getPets());
+    }
+    return allAnimalsFromGrandChild;
+  }
+
 }
