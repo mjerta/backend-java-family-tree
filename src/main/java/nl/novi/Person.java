@@ -52,6 +52,12 @@ public class Person {
   }
 
   public void addChild(Person child) {
+    if (this.sex.equals("male")) {
+      child.setFather(this);
+    }
+    else if (this.sex.equals("female")) {
+      child.setMother(this);
+    }
     children.add(child);
   }
 
