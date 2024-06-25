@@ -1,5 +1,6 @@
 package nl.novi;
 
+import com.sun.source.tree.ReturnTree;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -72,4 +73,28 @@ public class Person {
     return allAnimalsFromGrandChild;
   }
 
+  public List<Person> getAllNieces() {
+    List<Person> allNieces = new ArrayList<>();
+    if (siblings != null) {
+      for (Person sibling : siblings) {
+        if (sibling.getChildren() != null) {
+          boolean nieceFound = false;
+          for (Person child : sibling.getChildren()) {
+            if (child.sex.equals("female")) {
+              nieceFound = true;
+              allNieces.add(child);
+            }
+            if (!nieceFound) {
+              System.out.println("No niece was for " + sibling.getName());
+            }
+          }
+        }
+        else {
+          System.out.println("This sibling has no children");
+        }
+      }
+    }
+    else System.out.println("You have no siblings");
+    return allNieces;
+  }
 }

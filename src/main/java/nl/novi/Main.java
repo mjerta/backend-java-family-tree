@@ -10,6 +10,12 @@ public class Main {
     Person childOne = new Person("Tommy", "Postma", "male", 33);
     Person grandChild = new Person("Maarten jr.", "Postma", "male", 0);
     Person grandChildTwo = new Person("Zhoe jr", "Postma", "female", 33);
+    Person brother = new Person("Johan", "Postma", "male", 36);
+    Person niece = new Person("Fenna", "Postma", "female", 7);
+    Person nephew = new Person("Locas", "Postma", "male", 11);
+    maarten.addSibbling(brother);
+    brother.addChild(niece);
+    brother.addChild(nephew);
 
     Pet dogOne = new Pet("Sammy", 3, "samoyed");
     Pet dogTwo = new Pet("Jack", 6, "jack-russle");
@@ -30,16 +36,25 @@ public class Main {
     grandChild.setPets(pets);
     grandChildTwo.setPets(petsTwo);
 
-//    var test = maarten.getChildren();
-//    for (Person child : test) {
-//      System.out.println(child.getName());
-//    }
+    System.out.println("Testing list of children");
+    var test = maarten.getChildren();
+    for (Person child : test) {
+      System.out.println(child.getName());
+    }
 
-    // Testing the getAllAnimalsFromGranChildren function
+    // Testing the getAllAnimalsFromGranChildren method
+    System.out.println("\nTesting list of animals of grandchildren");
     var grandChildren = maarten.getGrandChildren();
     var allAnimalsFromGrandChildren = maarten.getAllAnimalsFromGrandChildren(grandChildren);
     for (var animal : allAnimalsFromGrandChildren) {
       System.out.println(animal.getName());
+    }
+
+    // Testing the getAllNieces method
+    System.out.println("\nTesting list of nieces");
+    var allNieces = maarten.getAllNieces();
+    for (Person lookedUpNiece : allNieces) {
+      System.out.println(lookedUpNiece.getName());
     }
 
   }
