@@ -19,6 +19,7 @@ public class Person {
   private int age;
   private Person mother;
   private Person father;
+  private Person partner;
   private List<Person> siblings = new ArrayList<>();
   private List<Person> children = new ArrayList<>();
   private List<Pet> pets = new ArrayList<>();

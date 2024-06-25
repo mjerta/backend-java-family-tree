@@ -7,12 +7,14 @@ public class Main {
   public static void main(String[] args) {
 
     Person maarten = new Person("Maarten", "Postma", "male", 67);
+    Person partner = new Person("Krizia", "Lyn", "Garcia", "female", 32);
     Person childOne = new Person("Tommy", "Postma", "male", 33);
     Person grandChild = new Person("Maarten jr.", "Postma", "male", 0);
     Person grandChildTwo = new Person("Zhoe jr", "Postma", "female", 33);
     Person brother = new Person("Johan", "Postma", "male", 36);
     Person niece = new Person("Fenna", "Postma", "female", 7);
     Person nephew = new Person("Locas", "Postma", "male", 11);
+    maarten.setPartner(partner);
     maarten.addSibbling(brother);
     brother.addChild(niece);
     brother.addChild(nephew);
@@ -57,5 +59,8 @@ public class Main {
       System.out.println(lookedUpNiece.getName());
     }
 
+    //Testing if i can see my partner
+    System.out.println("\nTesting to get if I can add a partner");
+    System.out.println(maarten.getPartner().getName());
   }
 }
