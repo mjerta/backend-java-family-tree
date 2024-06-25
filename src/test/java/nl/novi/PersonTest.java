@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -219,5 +220,25 @@ public class PersonTest {
     var sut = person.getGrandChildren();
     // assert
     assertEquals(grandChildren, sut);
+  }
+
+  @Test
+  void canGetAllAnimalsFromGrandChildren() {
+    // arrange
+    var child = new Person("Tommy", "Postma", "male", 20);
+    var grandChild = new Person("Ricardo", "Postma", "male", 0);
+    var pet = new Pet("Snoop Dog", 8, "Doggieddog");
+    List<Person> grandChildren = new ArrayList<>();
+    List<Pet> pets = new ArrayList<>();
+    grandChildren.add(grandChild);
+    pets.add(pet);
+    // act
+    child.addChild(grandChild);
+    grandChild.setPets(pets);
+    person.addChild(child);
+
+    var sut = person.getAllAnimalsFromGrandChildren(grandChildren);
+    // assert
+    assertEquals(pets, sut);
   }
 }
