@@ -289,8 +289,7 @@ public class PersonTest {
   void canGetAllNiecesButHasNoSiblings() {
     // arrange
     // act
-    person.getAllNieces();
-    var sut = person.getSiblings().size();
+    var sut = person.getAllNieces().size();
     // assert
     assertEquals(0, sut);
   }
